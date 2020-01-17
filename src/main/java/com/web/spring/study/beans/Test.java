@@ -12,6 +12,7 @@ public class Test {
         System.out.println(helloBean.getName());
         
         HelloBean helloBean2 = ctx.getBean(HelloBean.class);
+        
         System.out.println(helloBean2.getName());
 
     }
