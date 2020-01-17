@@ -86,6 +86,20 @@
             <version>1.8.3</version>
         </dependency>
         
+        <!-- JPA -->
+        <dependency>
+            <groupId>org.apache.openjpa</groupId>
+            <artifactId>openjpa</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        
+        <!-- Spring ORM -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        
         <!-- spring 核心包 -->
         <dependency>
             <groupId>org.springframework</groupId>
