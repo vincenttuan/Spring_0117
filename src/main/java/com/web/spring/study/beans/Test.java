@@ -13,6 +13,11 @@ public class Test {
         
         HelloBean helloBean2 = ctx.getBean(HelloBean.class);
         System.out.println(helloBean2.getName());
+        
+        Husband husband = ctx.getBean(Husband.class);
+        System.out.println(husband);
+        System.out.println(husband.getName());
+        System.out.println(husband.getWife().getName());
 
     }
 }

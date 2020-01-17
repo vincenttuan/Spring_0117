@@ -8,4 +8,18 @@
             <value>vincent</value>
         </property>
     </bean>
+    
+    <bean id="wife" class="com.web.spring.study.beans.Wife">
+        <property name="name">
+            <value>Mary</value>
+        </property>
+    </bean>
+    
+    <bean id="husband" class="com.web.spring.study.beans.Husband">
+        <property name="name">
+            <value>John</value>
+        </property>
+        <property name="wife" ref="wife" />
+    </bean>
+    
 </beans>
