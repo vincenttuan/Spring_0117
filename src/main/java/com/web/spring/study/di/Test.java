@@ -12,5 +12,11 @@ public class Test {
         Family family2 = (Family)ctx.getBean("family2");
         System.out.println(family2);
         
+        Family family3 = (Family)ctx.getBean("family3");
+        System.out.println(family3);
+        
+        Family family4 = (Family)ctx.getBean("family4");
+        System.out.println(family4);
+        
     }
 }
