@@ -19,7 +19,7 @@ public class Family {
     @Value("#{${hobbies : {'A', 'B', 'B', 'C'}}}")
     private List<String> hobbies;
 
-    @Value("#{${height : {A: 190, B: 180}}}")
+    @Value("#{${height : {'中文': 190, B: 180}}}")
     private Map<String, Integer> height;
 
     public String getName() {
