@@ -17,6 +17,22 @@ public class UserDAO {
     public void setUsers(List<Map<String, String>> users) {
         this.users = users;
     }
+    
+    public Map<String, String> getUser(String username) {
+        return users.stream().filter(u -> u.get("username").equals(username)).findFirst().get();
+    }
+    
+    public void updatePassword(String username, String newPassword) {
+        Map<String, String> user = getUser(username);
+        if(user == null) return;
+        user.replace("password", newPassword);
+    }
+    
+    public void deleteUser(String username) {
+        Map<String, String> user = getUser(username);
+        if(user == null) return;
+        users.remove(user);
+    }
 
     @Override
     public String toString() {
