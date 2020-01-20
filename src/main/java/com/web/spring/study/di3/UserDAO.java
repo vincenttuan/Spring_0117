@@ -40,6 +40,13 @@ public class UserDAO {
         users.remove(user);
     }
     
+    public void addUser(String username, String password) {
+        Map user = new LinkedHashMap<>();
+        user.put("username", username);
+        user.put("password", password);
+        users.add(user);
+    }
+    
     @Override
     public String toString() {
         return "UserDAO{" + "users=" + users + '}';

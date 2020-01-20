@@ -13,6 +13,8 @@ public class UserCRUD {
         System.out.println(userDAO.getUsers());
         userDAO.deleteUser("admin");
         System.out.println(userDAO.getUsers());
+        userDAO.addUser("mary", "9999");
+        System.out.println(userDAO.getUsers());
     }
     
 }
