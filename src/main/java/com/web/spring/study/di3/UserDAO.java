@@ -1,6 +1,7 @@
 package com.web.spring.study.di3;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,7 +28,7 @@ public class UserDAO {
         Map<String, String> user = getUser(username);
         if(user == null) return;
         deleteUser(username);
-        user = new HashMap();
+        user = new LinkedHashMap<>();
         user.put("username", username);
         user.put("password", newPassword);
         users.add(user);
