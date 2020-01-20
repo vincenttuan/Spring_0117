@@ -26,6 +26,14 @@ public class Family {
     public Family(Map<String, Integer> height) {
         this.height = height;
     }
+
+    public Family(String name, Set<String> members, List<String> hobbies, Map<String, Integer> height) {
+        this.name = name;
+        this.members = members;
+        this.hobbies = hobbies;
+        this.height = height;
+    }
+    
     
     public String getName() {
         return name;

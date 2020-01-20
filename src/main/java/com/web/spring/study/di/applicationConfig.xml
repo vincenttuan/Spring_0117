@@ -40,5 +40,26 @@
         </constructor-arg>
     </bean>
     
+    <bean id="family5" class="com.web.spring.study.di.Family">
+        <constructor-arg value="John" index="0" />
+        <constructor-arg index="1" >
+            <set>
+                <value>apple</value>
+                <value>banana</value>
+            </set>
+        </constructor-arg>
+        <constructor-arg index="2" >
+            <list>
+                <value>A</value>
+                <value>B</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg index="3" >
+            <map>
+                <entry key="apple" value="190"/>
+                <entry key="banana" value="180"/>
+            </map>
+        </constructor-arg>
+    </bean>
     
 </beans>
