@@ -1,5 +1,6 @@
 package com.web.spring.study.di3;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +26,11 @@ public class UserDAO {
     public void updatePassword(String username, String newPassword) {
         Map<String, String> user = getUser(username);
         if(user == null) return;
-        user.replace("password", newPassword);
+        deleteUser(username);
+        user = new HashMap();
+        user.put("username", username);
+        user.put("password", newPassword);
+        users.add(user);
     }
     
     public void deleteUser(String username) {
@@ -33,7 +38,7 @@ public class UserDAO {
         if(user == null) return;
         users.remove(user);
     }
-
+    
     @Override
     public String toString() {
         return "UserDAO{" + "users=" + users + '}';
