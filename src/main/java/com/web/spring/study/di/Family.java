@@ -11,6 +11,22 @@ public class Family {
     private List<String> hobbies;
     private Map<String, Integer> height;
 
+    public Family(String name) {
+        this.name = name;
+    }
+
+    public Family(Set<String> members) {
+        this.members = members;
+    }
+
+    public Family(List<String> hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    public Family(Map<String, Integer> height) {
+        this.height = height;
+    }
+    
     public String getName() {
         return name;
     }
@@ -42,5 +58,11 @@ public class Family {
     public void setHeight(Map<String, Integer> height) {
         this.height = height;
     }
+
+    @Override
+    public String toString() {
+        return "Family{" + "name=" + name + ", members=" + members + ", hobbies=" + hobbies + ", height=" + height + '}';
+    }
+    
     
 }
