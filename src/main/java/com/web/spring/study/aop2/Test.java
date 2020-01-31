@@ -8,5 +8,6 @@ public class Test {
         ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/java/com/web/spring/study/aop2/applicationConfig.xml");
         Actor actor = (Actor)ctx.getBean("singer");
         actor.show();
+        
     }
 }
