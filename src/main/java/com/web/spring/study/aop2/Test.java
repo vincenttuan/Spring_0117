@@ -7,7 +7,7 @@ public class Test {
     public static void main(String[] args) {
         ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/java/com/web/spring/study/aop2/applicationConfig.xml");
         Actor actor = (Actor)ctx.getBean("singer");
+        ((Talker)actor).say();
         actor.show();
-        
     }
 }

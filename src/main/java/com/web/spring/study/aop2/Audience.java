@@ -24,5 +24,6 @@ public class Audience {
             System.out.println("\u001B[31m太爛了 " + e.getMessage() + " ！退票");
         }
     }
-
+    
+    
 }
