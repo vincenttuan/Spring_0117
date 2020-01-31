@@ -160,6 +160,7 @@
             <artifactId>spring-aspects</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>aopalliance</groupId>
             <artifactId>aopalliance</artifactId>

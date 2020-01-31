@@ -20,6 +20,7 @@ Any value defined here will override the pom.xml file value but is only applicab
         <config-files>
             <config-file>src/main/java/com/web/spring/study/beans/beans-config.xml</config-file>
             <config-file>src/main/java/com/web/spring/study/beans3/applicationConfig.xml</config-file>
+            <config-file>src/main/java/com/web/spring/study/aop/applicationConfig.xml</config-file>
         </config-files>
         <config-file-groups/>
     </spring-data>
