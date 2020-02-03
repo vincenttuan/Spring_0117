@@ -23,12 +23,17 @@ public class HelloRepositiry {
     
     public void updateUser(Integer id, User user) {
         User u = getUser(id);
-        u.setName(user.getName());
-        u.setAge(user.getAge());
+        if(u != null) {
+            u.setName(user.getName());
+            u.setAge(user.getAge());
+        }
     }
     
     public void removeUser(Integer id) {
-        users.remove(getUser(id));
+        User u = getUser(id);
+        if(u != null) {
+            users.remove(u);
+        }
     }
     
 }
