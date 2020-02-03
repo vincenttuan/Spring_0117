@@ -1,6 +1,7 @@
 package com.web.mvc;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,8 +26,15 @@ public class HelloController {
     public ModelAndView callHelloJspPage() {
         ModelAndView mv = new ModelAndView();
         mv.addObject("name", "John");
-        mv.setViewName("/WEB-INF/jsp/hello.jsp");
+        //mv.setViewName("/WEB-INF/jsp/hello.jsp");
+        mv.setViewName("hello");
         return mv;
+    }
+    
+    @RequestMapping("/page2")
+    public String callHelloJspPage2(Model model) {
+        model.addAttribute("name", "Mary");
+        return "hello";
     }
     
 }
