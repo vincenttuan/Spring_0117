@@ -2,7 +2,9 @@ package com.web.mvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -69,6 +71,18 @@ public class HelloController {
     @RequestMapping(value = "/testParams2", params = {"age=18"})
     public String testParams2(Model model) {
         model.addAttribute("name", "Adult");
+        return "hello";
+    }
+    
+    @RequestMapping("/testCookie")
+    public String testCookie(Model model, @CookieValue("JSESSIONID") String sessionId) {
+        model.addAttribute("name", sessionId);
+        return "hello";
+    }
+    
+    @RequestMapping("/testHeader")
+    public String testHeader(Model model, @RequestHeader(value = "User-Agent") String userAgent) {
+        model.addAttribute("name", userAgent);
         return "hello";
     }
     
