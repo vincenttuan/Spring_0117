@@ -1,5 +1,6 @@
 package com.web.mvc;
 
+import com.web.mvc.beans.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -83,6 +84,12 @@ public class HelloController {
     @RequestMapping("/testHeader")
     public String testHeader(Model model, @RequestHeader(value = "User-Agent") String userAgent) {
         model.addAttribute("name", userAgent);
+        return "hello";
+    }
+    
+    @RequestMapping("/adduser") // ../adduser?name=John&age=18&num.id=1
+    public String addUser(Model model, User user) {
+        model.addAttribute("name", user);
         return "hello";
     }
     
