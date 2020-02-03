@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -53,8 +54,14 @@ public class HelloController {
         return "hello";
     }
     
-    @RequestMapping(value = "/testPaths/{name}/{age}")
+    @RequestMapping(value = "/testPaths/{name}/{age}") // ../testPaths/John/10
     public String testPaths2(Model model, @PathVariable("name") String name, @PathVariable("age") Integer age) {
+        model.addAttribute("name", name + " " + age);
+        return "hello";
+    }
+    
+    @RequestMapping(value = "/testParams") // ../testPaths?name=John&age=10
+    public String testParams(Model model, @RequestParam("name") String name, @RequestParam("age") Integer age) {
         model.addAttribute("name", name + " " + age);
         return "hello";
     }
