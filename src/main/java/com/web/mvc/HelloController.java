@@ -2,6 +2,7 @@ package com.web.mvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -51,5 +52,12 @@ public class HelloController {
         model.addAttribute("name", "Path");
         return "hello";
     }
+    
+    @RequestMapping(value = "/testPaths/{name}/{age}")
+    public String testPaths2(Model model, @PathVariable("name") String name, @PathVariable("age") Integer age) {
+        model.addAttribute("name", name + " " + age);
+        return "hello";
+    }
+    
     
 }
