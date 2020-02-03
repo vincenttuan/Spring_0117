@@ -66,5 +66,10 @@ public class HelloController {
         return "hello";
     }
     
+    @RequestMapping(value = "/testParams2", params = {"age=18"})
+    public String testParams2(Model model) {
+        model.addAttribute("name", "Adult");
+        return "hello";
+    }
     
 }
