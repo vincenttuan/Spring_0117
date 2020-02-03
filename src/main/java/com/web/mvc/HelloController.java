@@ -37,4 +37,19 @@ public class HelloController {
         return "hello";
     }
     
+    /*
+    @RequestMapping(value = "路徑")
+    ?  匹配 1 個字符  /testPaths? -> /testPathsA
+    ?? 匹配 2 個字符  /testPaths?? -> /testPathsAA
+    *  匹配任意字符   /testPaths/* -> /testPaths/ABCDEFG...
+    *  匹配任意字符   /testPaths/ * /ok -> /testPaths/ttt/ok
+    ** 可含有任意多層路徑 /testPaths/** -> /testPaths/aa/bb/cc
+    ** 可含有任意多層路徑 /testPaths/ ** /ok -> /testPaths/aa/bb/cc/ok
+    */
+    @RequestMapping(value = "/testPaths/**")
+    public String testPaths(Model model) {
+        model.addAttribute("name", "Path");
+        return "hello";
+    }
+    
 }
