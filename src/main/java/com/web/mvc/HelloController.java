@@ -103,4 +103,25 @@ public class HelloController {
         return "hello";
     }
     
+    @RequestMapping("/user/get/{id}") 
+    public String queryUsers(Model model, @PathVariable("id") Integer id) {
+        User user = hr.getUser(id);
+        model.addAttribute("name", user);
+        return "hello";
+    }
+    
+    @RequestMapping("/user/update/{id}") 
+    public String updateUser(Model model, User user, @PathVariable("id") Integer id) {
+        hr.updateUser(id, user);
+        model.addAttribute("name", "updateUser");
+        return "hello";
+    }
+    
+    @RequestMapping("/user/remove/{id}") 
+    public String removeUser(Model model, @PathVariable("id") Integer id) {
+        hr.removeUser(id);
+        model.addAttribute("name", "removeUser");
+        return "hello";
+    }
+    
 }

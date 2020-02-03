@@ -2,7 +2,7 @@ package com.web.mvc.beans;
 
 public class User {
     private String name;
-    private String age;
+    private Integer age;
     private Num num;
 
     public String getName() {
@@ -13,11 +13,11 @@ public class User {
         this.name = name;
     }
 
-    public String getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

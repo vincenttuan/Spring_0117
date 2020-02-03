@@ -10,7 +10,7 @@ public class HelloRepositiry {
     private static List<User> users = new Vector<>();
     
     public User getUser(Integer id) {
-        return null;
+        return users.stream().filter(u -> u.getNum().getId() == id).findFirst().get();
     }
     
     public List<User> queryUsers() {
@@ -21,12 +21,14 @@ public class HelloRepositiry {
         users.add(user);
     }
     
-    public void updateUser(User user) {
-        
+    public void updateUser(Integer id, User user) {
+        User u = getUser(id);
+        u.setName(user.getName());
+        u.setAge(user.getAge());
     }
     
-    public void removeUser(User user) {
-        users.remove(user);
+    public void removeUser(Integer id) {
+        users.remove(getUser(id));
     }
     
 }
