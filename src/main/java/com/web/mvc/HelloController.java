@@ -1,6 +1,7 @@
 package com.web.mvc;
 
 import com.web.mvc.beans.User;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -121,6 +122,14 @@ public class HelloController {
     public String removeUser(Model model, @PathVariable("id") Integer id) {
         hr.removeUser(id);
         model.addAttribute("name", "removeUser");
+        return "hello";
+    }
+    
+    // 利用 Map 容器收集資料
+    @RequestMapping("/map/add") // ../map/add?name=John&age=18
+    public String addMap(Model model, @RequestParam Map<String, Object> map) {
+        System.out.println(map);
+        model.addAttribute("name", map);
         return "hello";
     }
     
