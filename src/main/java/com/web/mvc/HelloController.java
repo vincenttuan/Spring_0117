@@ -1,6 +1,7 @@
 package com.web.mvc;
 
 import com.web.mvc.beans.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/hello")
 public class HelloController {
+    @Autowired
+    HelloRepositiry hr;
     
     @RequestMapping("/hi")
     @ResponseBody
@@ -87,9 +90,16 @@ public class HelloController {
         return "hello";
     }
     
-    @RequestMapping("/adduser") // ../adduser?name=John&age=18&num.id=1
+    @RequestMapping("/user/add") // ../user/add?name=John&age=18&num.id=1
     public String addUser(Model model, User user) {
+        hr.addUser(user);
         model.addAttribute("name", user);
+        return "hello";
+    }
+    
+    @RequestMapping("/user/query") 
+    public String queryUsers(Model model) {
+        model.addAttribute("name", hr.queryUsers());
         return "hello";
     }
     
