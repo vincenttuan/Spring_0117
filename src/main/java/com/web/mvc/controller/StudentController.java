@@ -12,9 +12,6 @@ public class StudentController {
     @GetMapping("/input")
     public String input(Model model) {
         Student student = new Student();
-//        student.setId(1);
-//        student.setName("Vincent");
-//        student.setAge(20);
         model.addAttribute("student", student);
         return "student";
     }
