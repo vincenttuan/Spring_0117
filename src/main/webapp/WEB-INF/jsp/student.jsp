@@ -9,13 +9,13 @@
         <title>JSP Page</title>
     </head>
     <body style="padding: 20px">
-        <form:form modelAttribute="student" method="post" action="/Spring_0117/mvc/student/add" class="pure-form">
+        <form:form modelAttribute="student" method="post" action="/Spring_0117/mvc/student/${action}" class="pure-form">
             <fieldset>
                 <legend>Student Form</legend>
                 <form:input path="id" readonly="true"/><p />
                 <form:input path="name" placeholder="請輸入name"/><p />
                 <form:input path="age" placeholder="請輸入age"/><p />
-                <button type="submit" class="pure-button pure-button-primary">add</button>
+                <button type="submit" class="pure-button pure-button-primary">${action}</button>
             </fieldset>
         </form:form>
         <table class="pure-table pure-table-bordered">

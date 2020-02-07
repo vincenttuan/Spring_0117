@@ -22,6 +22,7 @@ public class StudentController {
         Student student = new Student();
         model.addAttribute("student", student);
         model.addAttribute("students", students);
+        model.addAttribute("action", "add");
         return "student";
     }
     
@@ -35,6 +36,15 @@ public class StudentController {
         students.add(student);
         System.out.println(students);
         return "redirect:./input";
+    }
+    
+    @RequestMapping("/get/{id}")
+    public String get(@PathVariable("id") Integer id, Model model) {
+        Student student = students.stream().filter(s -> s.getId() == id).findFirst().get();
+        model.addAttribute("student", student);
+        model.addAttribute("students", students);
+        model.addAttribute("action", "update");
+        return "student";
     }
     
     @RequestMapping("/delete/{id}")
