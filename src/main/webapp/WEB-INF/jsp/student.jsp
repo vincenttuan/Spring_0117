@@ -9,7 +9,7 @@
         <title>JSP Page</title>
     </head>
     <body style="padding: 20px">
-        <form:form modelAttribute="student" method="post" action="" class="pure-form">
+        <form:form modelAttribute="student" method="post" action="/Spring_0117/mvc/student/add" class="pure-form">
             <fieldset>
                 <legend>Student Form</legend>
                 <form:input path="id" readonly="true"/><p />
