@@ -2,12 +2,12 @@ package com.web.mvc.controller;
 
 import com.web.mvc.beans.JavaExam;
 import com.web.mvc.beans.Student;
-import static com.web.mvc.controller.StudentController.students;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -44,7 +44,32 @@ public class JavaExamController {
         return "redirect:./input";
     }
     
+    @RequestMapping("/get/{id}")
+    public String get(@PathVariable("id") Integer id, Model model) {
+        JavaExam javaExam = javaExams.stream().filter(s -> s.getId() == id).findFirst().get();
+        model.addAttribute("javaExam", javaExam);
+        model.addAttribute("javaExams", javaExams);
+        model.addAttribute("students", StudentController.students);
+        model.addAttribute("action", "update");
+        return "javaexam";
+    }
     
+    @RequestMapping("/update")
+    public String update(@ModelAttribute JavaExam javaExam) {
+        JavaExam o_javaExam = javaExams.stream().filter(s -> s.getId() == javaExam.getId()).findFirst().get();
+        o_javaExam.setScore(javaExam.getScore());
+        
+        Student student = StudentController.students.stream().filter(s -> s.getId() == javaExam.getStudent().getId()).findFirst().get();
+        o_javaExam.setStudent(student);
+        return "redirect:./input";
+    }
+    
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Integer id) {
+        JavaExam javaExam = javaExams.stream().filter(s -> s.getId() == id).findFirst().get();
+        javaExams.remove(javaExam);
+        return "redirect:../input";
+    }
     
     
 }
