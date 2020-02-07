@@ -1,4 +1,4 @@
-package com.web.mvc;
+package com.web.mvc.repository;
 
 import com.web.mvc.beans.User;
 import java.util.List;
