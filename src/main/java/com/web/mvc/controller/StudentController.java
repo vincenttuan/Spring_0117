@@ -5,17 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/student")
 public class StudentController {
     
-    static List<Student> students = new ArrayList<>();
+    public static List<Student> students = new ArrayList<>();
     
     @RequestMapping("/input")
     public String input(Model model) {
@@ -34,7 +32,14 @@ public class StudentController {
         }
         student.setId(id);
         students.add(student);
-        System.out.println(students);
+        return "redirect:./input";
+    }
+    
+    @RequestMapping("/update")
+    public String update(@ModelAttribute Student student) {
+        Student o_student = students.stream().filter(s -> s.getId() == student.getId()).findFirst().get();
+        o_student.setName(student.getName());
+        o_student.setAge(student.getAge());
         return "redirect:./input";
     }
     
