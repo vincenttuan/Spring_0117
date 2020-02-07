@@ -29,7 +29,7 @@
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="j" items="${javaexams}">
+                <c:forEach var="j" items="${javaExams}">
                 <tr>
                     <td>${j.id}</td>
                     <td>${j.student.name}</td>
