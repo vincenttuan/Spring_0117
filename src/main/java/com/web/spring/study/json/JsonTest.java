@@ -31,7 +31,6 @@ public class JsonTest {
             if (jo.get("address").getAsString().contains(addr) && (jo.get("mask_child").getAsInt() >= child || (jo.get("mask_adult").getAsInt() >= adult))) {
                 System.out.format(leftAlignFormat, jo.get("name").getAsString().substring(0, 4), jo.get("mask_adult").getAsInt(), jo.get("mask_child").getAsInt(), jo.get("address").getAsString());
             }
-            
         }
         System.out.format("+-----------+-------+-------+----------------------------------+%n");
     }
