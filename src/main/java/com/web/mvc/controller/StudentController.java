@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -16,14 +17,15 @@ public class StudentController {
     
     static List<Student> students = new ArrayList<>();
     
-    @GetMapping("/input")
+    @RequestMapping("/input")
     public String input(Model model) {
         Student student = new Student();
         model.addAttribute("student", student);
+        model.addAttribute("students", students);
         return "student";
     }
     
-    @PostMapping("/add")
+    @RequestMapping("/add")
     public String add(@ModelAttribute Student student) {
         int id = 1;
         if(students.size() != 0) {
@@ -33,6 +35,13 @@ public class StudentController {
         students.add(student);
         System.out.println(students);
         return "redirect:./input";
+    }
+    
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Integer id) {
+        Student student = students.stream().filter(s -> s.getId() == id).findFirst().get();
+        students.remove(student);
+        return "redirect:../input";
     }
     
     

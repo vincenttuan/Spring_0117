@@ -18,5 +18,27 @@
                 <button type="submit" class="pure-button pure-button-primary">add</button>
             </fieldset>
         </form:form>
+        <table class="pure-table pure-table-bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>age</th>
+                    <th>update</th>
+                    <th>delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="s" items="${students}">
+                <tr>
+                    <td>${s.id}</td>
+                    <td>${s.name}</td>
+                    <td>${s.age}</td>
+                    <td><a href="/Spring_0117/mvc/student/get/${s.id}">update</a></td>
+                    <td><a href="/Spring_0117/mvc/student/delete/${s.id}">delete</a></td>
+                </tr>
+                </c:forEach>
+            </tbody>
+        </table>
     </body>
 </html>
