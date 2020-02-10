@@ -18,7 +18,6 @@
     <context:component-scan base-package="com.web.mvc.controller"/>
     <context:component-scan base-package="com.web.mvc.repository"/>
     <context:component-scan base-package="com.web.mvc.validate"/>
-    <context:component-scan base-package="com.web.mvc.beans"/>
     
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           id="internalResourceViewResolver">
@@ -26,14 +25,5 @@
         <property name="suffix" value=".jsp" />
     </bean>
     
-    <!-- 自定converter與formatter -->
-    <bean id="conversionService" 
-          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        <property name="formatters">
-            <set> <!-- 透過@註釋配置 --></set>
-        </property>
-    </bean>
-    <mvc:annotation-driven conversion-service="conversionService" />
-
 
 </beans>
