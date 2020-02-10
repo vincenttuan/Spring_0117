@@ -14,10 +14,17 @@
           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
           http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-          
-    <context:component-scan base-package="com.web.mvc.controller"/>
-    <context:component-scan base-package="com.web.mvc.repository"/>
-    <context:component-scan base-package="com.web.mvc.validate"/>
+    
+    <context:component-scan base-package="com.web.mvc.*" />      
+    
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <list>
+                <bean class="org.springframework.format.datetime.DateFormatter" p:pattern="yyyy/MM/dd"></bean>
+            </list>
+        </property>
+    </bean>
+    <mvc:annotation-driven conversion-service="conversionService"/>
     
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           id="internalResourceViewResolver">

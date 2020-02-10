@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,7 +49,7 @@
                     <td>${s.id}</td>
                     <td>${s.name}</td>
                     <td>${s.age}</td>
-                    <td>${s.date}</td>
+                    <td><fmt:formatDate value="${s.date}" pattern="yyyy/MM/dd"/></td>
                     <td><a href="/Spring_0117/mvc/student/get/${s.id}">update</a></td>
                     <td><a href="/Spring_0117/mvc/student/delete/${s.id}">delete</a></td>
                 </tr>

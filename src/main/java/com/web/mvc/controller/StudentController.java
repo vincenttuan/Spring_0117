@@ -3,6 +3,7 @@ package com.web.mvc.controller;
 import com.web.mvc.beans.Student;
 import com.web.mvc.validate.StudentValidator;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.datetime.DateFormatter;
@@ -27,6 +28,7 @@ public class StudentController {
     @RequestMapping("/input")
     public String input(Model model) {
         Student student = new Student();
+        
         model.addAttribute("student", student);
         model.addAttribute("students", students);
         model.addAttribute("action", "add");
