@@ -16,21 +16,17 @@
           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     
     <context:component-scan base-package="com.web.mvc.*" />      
-    
-    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        <property name="formatters">
-            <list>
-                <bean class="org.springframework.format.datetime.DateFormatter" p:pattern="yyyy/MM/dd"></bean>
-            </list>
-        </property>
-    </bean>
-    <mvc:annotation-driven conversion-service="conversionService"/>
-    
+     
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           id="internalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
     
+    <bean id="messageSource"
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="/WEB-INF/resource/errorMessages" />
+    </bean>
+
 
 </beans>

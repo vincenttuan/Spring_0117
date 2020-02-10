@@ -31,6 +31,8 @@
                 <form:textarea path="note" /><p />
                 <button type="submit" class="pure-button pure-button-primary">${action}</button>
                 <button type="reset" class="pure-button pure-button-primary">reset</button>
+                <hr />
+                <form:errors path="*" />
             </fieldset>
         </form:form>
         <table class="pure-table pure-table-bordered" width="100%">
