@@ -1,12 +1,14 @@
 package com.web.mvc.beans;
 
-import javax.validation.constraints.Size;
+import java.util.Date;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Student {
     private Integer id;
     private String name;
     private Integer age;
-
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    private Date date;
     public Integer getId() {
         return id;
     }
@@ -31,9 +33,13 @@ public class Student {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" + "id=" + id + ", name=" + name + ", age=" + age + '}';
+    public Date getDate() {
+        return date;
     }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+    
     
 }

@@ -25,5 +25,15 @@
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
+    
+    <!-- 自定converter與formatter -->
+    <bean id="conversionService" 
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <set> <!-- 透過@註釋配置 --></set>
+        </property>
+    </bean>
+    <mvc:annotation-driven conversion-service="conversionService" />
 
- </beans>
+
+</beans>
