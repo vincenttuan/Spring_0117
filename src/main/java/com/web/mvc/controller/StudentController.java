@@ -1,10 +1,13 @@
 package com.web.mvc.controller;
 
 import com.web.mvc.beans.Student;
+import com.web.mvc.validate.StudentValidator;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StudentController {
     
     public static List<Student> students = new ArrayList<>();
+    
+    @Autowired
+    private StudentValidator validator;
     
     @RequestMapping("/input")
     public String input(Model model) {
@@ -25,7 +31,13 @@ public class StudentController {
     }
     
     @RequestMapping("/add")
-    public String add(@ModelAttribute Student student) {
+    public String add(@ModelAttribute Student student, BindingResult result, Model model) {
+        validator.validate(student, result);
+        if(result.hasErrors()) {
+            model.addAttribute("students", students);
+            model.addAttribute("action", "add");
+            return "student";
+        }
         int id = 1;
         if(students.size() != 0) {
             id = students.stream().mapToInt(s -> s.getId()).max().getAsInt() + 1;

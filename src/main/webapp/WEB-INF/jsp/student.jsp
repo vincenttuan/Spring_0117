@@ -13,9 +13,11 @@
             <fieldset>
                 <legend>Student Form</legend>
                 <form:input path="id" readonly="true"/><p />
-                <form:input path="name" placeholder="請輸入name"/><p />
+                <form:input path="name" placeholder="請輸入name"/> <form:errors path="name" style="color: red" /><p />
                 <form:input path="age" placeholder="請輸入age"/><p />
                 <button type="submit" class="pure-button pure-button-primary">${action}</button>
+                <hr />
+                <form:errors path="*" />
             </fieldset>
         </form:form>
         <table class="pure-table pure-table-bordered">
