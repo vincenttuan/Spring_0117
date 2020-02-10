@@ -1,5 +1,7 @@
 package com.web.mvc.beans;
 
+import javax.validation.constraints.Size;
+
 public class Student {
     private Integer id;
     private String name;
