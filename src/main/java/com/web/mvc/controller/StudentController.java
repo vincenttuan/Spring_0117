@@ -57,6 +57,7 @@ public class StudentController {
         Student o_student = students.stream().filter(s -> s.getId() == student.getId()).findFirst().get();
         o_student.setName(student.getName());
         o_student.setAge(student.getAge());
+        o_student.setDate(student.getDate());
         return "redirect:./input";
     }
     

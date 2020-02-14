@@ -7,8 +7,9 @@ public class Student {
     private Integer id;
     private String name;
     private Integer age;
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date = new Date();
+    
     public Integer getId() {
         return id;
     }

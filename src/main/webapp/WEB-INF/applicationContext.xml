@@ -27,6 +27,15 @@
           class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="/WEB-INF/resource/errorMessages" />
     </bean>
+    
+    <mvc:annotation-driven conversion-service="conversionService"/>
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <list>
+                <bean class="org.springframework.format.datetime.DateFormatter" p:pattern="yyyy-MM-dd"></bean>
+            </list>
+        </property>
+    </bean>
 
-
+    
 </beans>
