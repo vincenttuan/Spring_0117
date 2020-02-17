@@ -32,6 +32,7 @@ public class MemberController {
     @RequestMapping("/save")
     @ResponseBody
     public String register(@ModelAttribute Member member) {
+        // 已傳入 username, password, email
         String code = Integer.toHexString(member.hashCode());
         member.setCode(code);
         member.setPass(Boolean.FALSE);
