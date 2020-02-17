@@ -43,7 +43,9 @@ public class MemberDaoImpl implements MemberDao {
 
     @Override
     public Boolean save(Member member) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "INSERT INTO MEMBER(USERNAME, PASSWORD, EMAIL, PASS, CODE, PRIORITY) VALUES(?, ?, ?, ?, ?, ?)";
+        int rowCount = jdbcTemplate.update(sql, member.getUsername(), member.getPassword(), member.getEmail(), member.getPass(), member.getCode(), member.getPriority());
+        return rowCount == 1 ? true : false;
     }
 
     @Override
