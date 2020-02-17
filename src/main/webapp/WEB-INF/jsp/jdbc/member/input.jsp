@@ -23,10 +23,7 @@
                         Pass Time：<form:input path="passts" placeholder="Pass Time" readonly="true" /><p />
                         Code：<form:input path="code" placeholder="Code" readonly="true" /><p />
                         Priority：
-                        <form:select path="priority">
-                            <form:option value="-1" label="請選擇..." />
-                            <form:options items="${priorities}" />
-                        </form:select>
+                        <form:input path="priority" placeholder="Priority" type="number"/>
                         <p />
                         Create Time：<form:input path="ts" placeholder="Create Time" readonly="true" /><p />
                         <button type="submit" class="pure-button pure-button-primary">${action}</button>

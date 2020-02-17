@@ -68,6 +68,7 @@ public class MemberController {
     @RequestMapping("/update/{id}")
     @ResponseBody
     public String update(@PathVariable("id") Integer id, @ModelAttribute Member member) {
+        //return id + ", " + member.toString();
         Member o_member = dao.getMember(id);
         o_member.setPassword(member.getPassword());
         o_member.setEmail(member.getEmail());
