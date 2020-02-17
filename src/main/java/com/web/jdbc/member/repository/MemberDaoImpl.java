@@ -1,10 +1,13 @@
 package com.web.jdbc.member.repository;
 
 import com.web.jdbc.member.beans.Member;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,7 +18,22 @@ public class MemberDaoImpl implements MemberDao {
     @Override
     public List<Member> query() {
         String sql = "SELECT * FROM MEMBER";
-        List<Member> list = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Member>(Member.class));
+        List<Member> list = jdbcTemplate.query(sql, new RowMapper<Member>() {
+            @Override
+            public Member mapRow(ResultSet rs, int i) throws SQLException {
+                Member member = new Member();
+                member.setId(rs.getInt("ID"));
+                member.setUsername(rs.getString("USERNAME"));
+                member.setPassword(rs.getString("PASSWORD"));
+                member.setEmail(rs.getString("EMAIL"));
+                member.setPass(rs.getBoolean("PASS"));
+                member.setCode(rs.getString("CODE"));
+                member.setPassts(rs.getDate("PASSTS"));
+                member.setPriority(rs.getInt("PRIORITY"));
+                member.setTs(rs.getDate("TS"));
+                return member;
+            }
+        });
         return list;
     }
 

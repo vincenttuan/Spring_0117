@@ -3,6 +3,7 @@ package com.web.jdbc.member.controller;
 import com.web.jdbc.member.beans.Member;
 import com.web.jdbc.member.repository.MemberDao;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,4 +42,19 @@ public class MemberController {
         dao.save(member);
         return member + " saved.";
     }
+    
+    @RequestMapping("/query")
+    @ResponseBody
+    public String query() {
+        List<Member> members = dao.query();
+        return members.toString();
+    }
+    
+    @RequestMapping("/get/{id}")
+    @ResponseBody
+    public String get(@PathVariable("id") Integer id) {
+        Member member = dao.getMember(id);
+        return member.toString();
+    }
+    
 }
