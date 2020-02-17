@@ -16,11 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * /jdbc/member/input 
- * /jdbc/member/query 
- * /jdbc/member/get/{id}
- * /jdbc/member/update/{id} 
- * /jdbc/member/delete/{id}
+ * /jdbc/member/input 預設頁
+ * /jdbc/member/save 新增
+ * /jdbc/member/query 查詢全部
+ * /jdbc/member/get/{id} 查詢單筆
+ * /jdbc/member/update/{id} 修改單筆
+ * /jdbc/member/delete/{id} 刪除單筆
  */
 @Controller
 @RequestMapping("/jdbc/member")
@@ -31,7 +32,7 @@ public class MemberController {
     
     @RequestMapping("/save")
     @ResponseBody
-    public String register(@ModelAttribute Member member) {
+    public String save(@ModelAttribute Member member) {
         // 已傳入 username, password, email
         String code = Integer.toHexString(member.hashCode());
         member.setCode(code);
