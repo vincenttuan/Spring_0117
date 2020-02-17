@@ -31,6 +31,14 @@ public class MemberController {
     @Autowired
     private MemberDao dao;
     
+    @RequestMapping("/input")
+    @ResponseBody
+    public String input(Model model) {
+        Member member = new Member();
+        model.addAttribute("member", member);
+        return "jdbc/member/input";
+    }
+    
     @RequestMapping("/save")
     @ResponseBody
     public String save(@ModelAttribute Member member) {
