@@ -11,7 +11,7 @@
     </head>
     <body style="padding: 15px">
         <table>
-            <td valign="top">
+            <td valign="top" style="padding: 10px">
                 <form:form modelAttribute="member" id="myform"  class="pure-form" method="post" action="${pageContext.request.getContextPath()}/mvc/jdbc/member/${action}">
                     <fieldset>
                         <legend>Member</legend>
@@ -33,7 +33,7 @@
                     </fieldset>
                 </form:form>
             </td>
-            <td valign="top">
+            <td valign="top" style="padding: 10px">
                 <table class="pure-table pure-table-bordered" width="100%">
                     <thead>
                         <tr style="cursor: pointer" >

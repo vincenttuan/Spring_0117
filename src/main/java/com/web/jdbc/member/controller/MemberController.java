@@ -32,10 +32,10 @@ public class MemberController {
     private MemberDao dao;
     
     @RequestMapping("/input")
-    @ResponseBody
     public String input(Model model) {
         Member member = new Member();
         model.addAttribute("member", member);
+        model.addAttribute("action", "save");
         return "jdbc/member/input";
     }
     
