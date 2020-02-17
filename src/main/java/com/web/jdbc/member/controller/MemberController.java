@@ -57,4 +57,23 @@ public class MemberController {
         return member.toString();
     }
     
+    @RequestMapping("/update/{id}")
+    @ResponseBody
+    public String update(@PathVariable("id") Integer id, @ModelAttribute Member member) {
+        Member o_member = dao.getMember(id);
+        o_member.setPassword(member.getPassword());
+        o_member.setEmail(member.getEmail());
+        o_member.setPass(member.getPass());
+        o_member.setPriority(member.getPriority());
+        dao.update(member);
+        return member + " updated.";
+    }
+    
+    @RequestMapping("/delete/{id}")
+    @ResponseBody
+    public String update(@PathVariable("id") Integer id) {
+        dao.delete(id);
+        return id + " deleted.";
+    }
+    
 }
