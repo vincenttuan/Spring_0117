@@ -17,7 +17,7 @@
                         <legend>Member</legend>
                         ID：<form:input path="id" placeholder="ID" readonly="true"/><p />
                         Username：<form:input path="username" placeholder="Username" /><p />
-                        Password：<form:password path="password" placeholder="Password" /><p />
+                        Password：<form:input path="password" placeholder="Password" /><p />
                         Email：<form:input path="email" placeholder="Email" /><p />
                         Pass：<form:checkbox path="pass" placeholder="Pass" /><p />
                         Pass Time：<form:input path="passts" placeholder="Pass Time" readonly="true" /><p />
