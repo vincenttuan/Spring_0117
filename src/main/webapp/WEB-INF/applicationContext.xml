@@ -36,6 +36,18 @@
             </list>
         </property>
     </bean>
+    
+    <!-- JDBC -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver" />
+        <property name="jdbcUrl" value="jdbc:derby://localhost:1527/sample" />
+        <property name="user" value="app" />
+        <property name="password" value="app" />
+        <property name="initialPoolSize" value="100" />
+    </bean>
 
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
     
 </beans>
