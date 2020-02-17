@@ -39,8 +39,8 @@
                             <th>password</th>
                             <th>email</th>
                             <th>pass</th>
-                            <th>code</th>
                             <th>passts</th>
+                            <th>code</th>
                             <th>priority</th>
                             <th>ts</th>
                             <th>update</th>
@@ -49,6 +49,21 @@
                     </thead>
                     <tbody>
                         <!-- Member 資料列表 -->
+                        <c:forEach var="m" items="${members}">
+                            <tr>
+                                <td>${m.id}</td>
+                                <td>${m.username}</td>
+                                <td>${m.password}</td>
+                                <td>${m.email}</td>
+                                <td>${m.pass}</td>
+                                <td>${m.passts}</td>
+                                <td>${m.code}</td>
+                                <td>${m.priority}</td>
+                                <td><fmt:formatDate pattern="yyyy-MM-dd" value="${m.ts}" /></td>
+                                <td><a href="/Spring_0117/mvc/jdbc/member/get/${m.id}">update</a></td>
+                                <td><a href="/Spring_0117/mvc/jdbc/member/delete/${m.id}">delete</a></td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </td>

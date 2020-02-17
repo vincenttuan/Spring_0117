@@ -34,21 +34,21 @@ public class MemberController {
     @RequestMapping("/input")
     public String input(Model model) {
         Member member = new Member();
+        List<Member> members = dao.query();
         model.addAttribute("member", member);
+        model.addAttribute("members", members);
         model.addAttribute("action", "save");
         return "jdbc/member/input";
     }
     
     @RequestMapping("/save")
-    @ResponseBody
     public String save(@ModelAttribute Member member) {
-        // 已傳入 username, password, email
         String code = Integer.toHexString(member.hashCode());
         member.setCode(code);
         member.setPass(Boolean.FALSE);
         member.setPriority(1);
         dao.save(member);
-        return member + " saved.";
+        return "redirect:./input";
     }
     
     @RequestMapping("/query")
@@ -59,30 +59,30 @@ public class MemberController {
     }
     
     @RequestMapping("/get/{id}")
-    @ResponseBody
-    public String get(@PathVariable("id") Integer id) {
+    public String get(@PathVariable("id") Integer id, Model model) {
         Member member = dao.getMember(id);
-        return member.toString();
+        List<Member> members = dao.query();
+        model.addAttribute("member", member);
+        model.addAttribute("members", members);
+        model.addAttribute("action", "update/" + id); // 因為 /jdbc/member/update/{id} 修改單筆
+        return "jdbc/member/input";
     }
     
     @RequestMapping("/update/{id}")
-    @ResponseBody
     public String update(@PathVariable("id") Integer id, @ModelAttribute Member member) {
-        //return id + ", " + member.toString();
         Member o_member = dao.getMember(id);
         o_member.setPassword(member.getPassword());
         o_member.setEmail(member.getEmail());
         o_member.setPass(member.getPass());
         o_member.setPriority(member.getPriority());
         dao.update(member);
-        return member + " updated.";
+        return "redirect:../input";
     }
     
     @RequestMapping("/delete/{id}")
-    @ResponseBody
     public String update(@PathVariable("id") Integer id) {
         dao.delete(id);
-        return id + " deleted.";
+        return "redirect:../input";
     }
     
 }
