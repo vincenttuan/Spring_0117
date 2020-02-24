@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +31,14 @@ public class UploadFileController2 {
     @GetMapping("/")
     public String input(Model model) {
         model.addAttribute("photo", new Photo());
+        model.addAttribute("list", list);
+        return "fileUploadView2";
+    }
+    
+    @GetMapping("/get/{name}")
+    public String get(@PathVariable("name") String name, Model model) {
+        Photo photo = list.stream().filter(p -> p.getName().equals(name)).findAny().get();
+        model.addAttribute("photo", photo);
         model.addAttribute("list", list);
         return "fileUploadView2";
     }

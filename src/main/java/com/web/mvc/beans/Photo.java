@@ -2,7 +2,7 @@ package com.web.mvc.beans;
 
 public class Photo {
     private String name;
-    private String base64;
+    private String base64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
 
     public String getName() {
         return name;
