@@ -1,14 +1,18 @@
 package com.web.mvc.controller;
 
 import com.web.mvc.beans.Photo;
+import com.web.mvc.validate.PhotoValidator;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.codec.binary.Base64;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,18 +24,25 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadFileController2 {
     private List<Photo> list = new ArrayList<>();
     private String emptyBase64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
+    @Autowired
+    private PhotoValidator validator;
     
     @GetMapping("/")
     public String input(Model model) {
+        model.addAttribute("photo", new Photo());
         model.addAttribute("list", list);
         return "fileUploadView2";
     }
 
     @PostMapping("/uploadFile")
-    public String submit(@RequestParam("file") MultipartFile file, @RequestParam("name") String name, Model model) {
-        Photo photo = new Photo();
-        photo.setName(name);
+    public String submit(@ModelAttribute Photo photo, BindingResult result, @RequestParam("file") MultipartFile file, Model model) {
         photo.setBase64(getBase64(file));
+        System.out.println(photo.getBase64().length() + " : " + photo.getBase64());
+        validator.validate(photo, result);
+        if(result.hasErrors()) {
+            model.addAttribute("list", list);
+            return "fileUploadView2";
+        }
         list.add(photo);
         model.addAttribute("list", list);
         return "fileUploadView2";
