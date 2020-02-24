@@ -32,6 +32,7 @@ public class UploadFileController2 {
     public String input(Model model) {
         model.addAttribute("photo", new Photo());
         model.addAttribute("list", list);
+        model.addAttribute("previewWidth", 0);
         return "fileUploadView2";
     }
     
@@ -40,11 +41,13 @@ public class UploadFileController2 {
         Photo photo = list.stream().filter(p -> p.getName().equals(name)).findAny().get();
         model.addAttribute("photo", photo);
         model.addAttribute("list", list);
+        model.addAttribute("previewWidth", 100);
         return "fileUploadView2";
     }
 
     @PostMapping("/uploadFile")
     public String submit(@ModelAttribute Photo photo, BindingResult result, @RequestParam("file") MultipartFile file, Model model) {
+        model.addAttribute("previewWidth", 0);
         photo.setBase64(getBase64(file));
         System.out.println(photo.getBase64().length() + " : " + photo.getBase64());
         validator.validate(photo, result);

@@ -18,7 +18,7 @@
                 <form:hidden path="base64" />
                 Select a file to upload <p />
                 <input type="file" name="file" /><p />
-                <img width="100" src="data:image/png;base64, ${photo.base64}" />
+                <img width="${previewWidth}" src="data:image/png;base64, ${photo.base64}" />
                 <button type="submit" class="pure-button pure-button-primary">Submit</button>
             </fieldset>
             <form:errors path="*" style="color:red" />
