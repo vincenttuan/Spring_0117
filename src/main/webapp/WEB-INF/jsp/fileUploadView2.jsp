@@ -12,7 +12,7 @@
             <td valign="top" style="padding: 20px">
                 <form:form modelAttribute="photo" class="pure-form" 
                            method="POST"
-                           action="uploadFile"
+                           action="/Spring_0117/mvc/upload2/uploadFile"
                            enctype="multipart/form-data">
                     <fieldset>
                         <legend>Photo upload form</legend>
