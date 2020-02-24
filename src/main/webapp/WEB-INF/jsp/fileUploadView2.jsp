@@ -12,16 +12,30 @@
               action="uploadFile"
               enctype="multipart/form-data">
             <fieldset>
-                <legend>Photo upload</legend>
+                <legend>Photo upload form</legend>
+                <input type="text" name="name"><p />
                 Select a file to upload <p />
-                <input type="file" name="file" /><p />
-                <input type="file" name="file" /><p />
                 <input type="file" name="file" /><p />
                 <button type="submit" class="pure-button pure-button-primary">Submit</button>
             </fieldset>
         </form>
-        <c:forEach var="base64" items="${base64List}">
-            <img src="data:image/png;base64, ${base64}" /><p />
-        </c:forEach>
+        <table class="pure-table pure-table-bordered">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>photo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="photo" items="${list}">
+                    <tr>
+                        <td>${photo.name}</td>
+                        <td><img width="300" src="data:image/png;base64, ${photo.base64}" /></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+
     </body>
 </html>
+
