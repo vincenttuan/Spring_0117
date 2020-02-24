@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,11 +14,14 @@
             <fieldset>
                 <legend>File upload form</legend>
                 Select a file to upload <p />
-                <input type="file" name="file" />
+                <input type="file" name="file" /><p />
+                <input type="file" name="file" /><p />
+                <input type="file" name="file" /><p />
                 <button type="submit" class="pure-button pure-button-primary">Submit</button>
             </fieldset>
         </form>
-        <img src="data:image/png;base64, ${base64}" /><p />
-        
+        <c:forEach var="base64" items="${base64List}">
+            <img src="data:image/png;base64, ${base64}" /><p />
+        </c:forEach>
     </body>
 </html>
